@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org"
+	th:replace="normalUser/baseUser::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="my-card me-4 ms-3 " th:if="${c}">
+
+			<div class="text-center">
+				<img style="width: 250px; height: 250px; border-radius: 50%"
+					alt="profile photo" th:src="@{'/img/'+${c.cImageUrl}}"
+					class="text-center">
+				<h3>
+					<span th:text="${c.name}"></span> (<span th:text="${c.nickName}"></span>)
+				</h3>
+			</div>
+			<table class="table">
+				
+				<tbody  th:each="n : ${c}">
+					<tr>
+						<th scope="row" >Sr. No</th>
+						<th  th:text="'SCMUSER'+${n.cid}"></th>
+					</tr>
+					
+					<tr>
+						<th scope="row" >Work</th>
+						<td  th:text="${n.work}"></td>
+					</tr>
+					
+					<tr>
+						<th scope="row" >Email</th>
+						<td  th:text="${n.email}"></td>
+					</tr>
+					
+					
+					<tr>
+						<th scope="row" >Phone</th>
+						<td> <span th:text="${n.number}"></span></td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			<div class="text-center">
+					<a th:href="@{'/user/update-form/'+${c.cid}}" class="btn btn-info " >Update</a>
+					<a href="#"  th:onclick="|deletContact(${c.cid})|" class="btn btn-warning">Delete</a>
+			</div>
+		</div>
+		
+		<div  th:unless="${c}"  class="text-center bg-danger me-4 mt-2 text-white  border">
+			<h1>Access Denied !!</h1>
+			<h2>You're trying to view someone else's contact</h2>
+			</div>
+		
+	</section>
+
+</body>
+</html>

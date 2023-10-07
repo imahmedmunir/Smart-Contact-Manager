@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"  xmlns:th="http//:www.thymeLeaf.org"
+	th:replace="normalUser/baseUser::Layout(~{::section})"
+>
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	
+	<section>
+			<div class="my-card mt-2  me-4 ms-3 ">
+			<div th:if="${session.message}"
+				th:classappend="${session.message.type}" class="alert" role="alert">
+				<p th:text="${session.message.content}" class="text-center"></p>
+
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+			<div class="container text-center" >
+				<img  style="width: 100px; height: 100px;  border-radius: 50%; "  alt="Image" th:src="@{'/user_img/'+${user.imageUrl}}" >
+			</div>
+			<h1 class="text-center">Update Profile</h1>
+			<div class="container-fluid">
+
+				<div class="row  ">
+					<div class="col-md-10 offset-md-1">
+						<form th:action="@{/user/update-user}" th:method="post"
+							th:object="${user}"  enctype="multipart/form-data"  class="mt-2">
+					
+						<input type="hidden" name="uid" th:value="${user.id}">
+
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text ">
+										<img alt="" style="height: 23px;"
+											th:src="@{/img/nickname.png}">
+									</div>
+								</div>
+							
+								<input type="text" name="name" placeholder="Enter name "
+									th:value="${user.name}" class="form-control"
+									th:classappend="${#fields.hasErrors('name')? 'is-invalid': ' ' }"
+									required>
+								<div class="invalid-feedback"
+									th:each="n: ${#fields.errors('name')}" th:text="${n}"></div>
+							</div>
+
+							<!-- second filed -->
+
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text ">
+										<label style="height: 23px;" th:src="@{/img/plus.png}" >@</label>
+									</div>
+								</div>
+
+								<input type="text" name="email" placeholder="email "
+									th:value="${user.email}" class="form-control"
+									th:classappend="${#fields.hasErrors('email')? 'is-invalid': ' ' }" />
+								<div class="invalid-feedback"
+									th:each="n: ${#fields.errors('email')}" th:text="${n}">
+								</div>
+
+							</div>
+
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text ">
+										<img alt="" style="height: 23px;"
+											th:src="@{/img/phone-call.png}">
+									</div>
+								</div>
+
+								<input type="text" name="phone" placeholder="Ex : 0333-1122333"
+									th:value="${user.phone}" class="form-control"
+									th:classappend="${#fields.hasErrors('phone')? 'is-invalid': ' ' }"
+									required />
+								<div class="invalid-feedback"
+									th:each="n: ${#fields.errors('phone')}" th:text="${n}">
+								</div>
+
+							</div>
+
+							<div class="form-group mb-3">
+								<textarea name="about" id="mytextarea"
+									placeholder="Put more information about you" rows="6"
+									cols="30" class="form-control" th:text="${user.about}"></textarea>
+							</div>
+
+							<div class="custom-file">
+								<input type="file" name="imageUrl">
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="btn btn-success">Update</button>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+			
+	</section>
+	
+</body>
+</html>

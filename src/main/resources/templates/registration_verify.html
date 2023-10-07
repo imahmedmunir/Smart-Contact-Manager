@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org"
+	th:replace="parent::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section >
+	
+		<div class="registerOTP ">
+			<div class="containerotp m-3 ">
+					<div class="alert alert-success text-center " role="alert">
+								OTP Sent to Email</div>
+									
+									<div th:if="${session.message}" class="alert alert-danger text-center" >
+										<p th:text="${session.message}">
+									<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+									
+									</div>
+									
+									<form th:action="@{/registration-verify}" method="post">
+											<div class="form-group">
+													<input type="number" class="form-control" placeholder="Enter OTP here" name="register">
+											</div>
+											<br>
+											<div class="text-center ">
+												<button type="submit" class="btn btn-success ">Verify OTP</button>
+											</div>
+								</form>
+				</div>
+			</div>
+
+	</section>
+
+</body>
+</html>

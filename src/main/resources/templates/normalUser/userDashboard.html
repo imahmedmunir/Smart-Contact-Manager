@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org"
+	th:replace="normalUser/baseUser::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section>
+		<div class="card mt-2 me-4 ms-4">
+			<div class="text-center mt-1">
+				<img style="width: 250px; height: 250px; border-radius: 50%;"
+					alt="profile photo" th:src="@{'/user_img/'+${user.imageUrl}}">
+					
+					<h2 th:text="${user.name}+' Store your cloud contacts here'"></h2>
+		
+			</div>
+
+			
+			<div class="container text-center my-2">
+				<a class="btn btn-success" style="width:200px;" th:href="@{/user/add-contact}">Add New Contacts</a>
+			</div>
+			<div class="container text-center my-2" >
+				<a class="btn btn-warning " style="width:200px;" th:href="@{'/user/view-contacts/'+${0}}">View Contacts</a>
+			</div>
+			<div class="container text-center my-2">
+				<a class="btn btn-info " style="width:200px;" th:href="@{/user/user-profile}">My Profile</a>
+			</div>
+			<div class="container text-center my-2">
+				<a class="btn btn-secondary"  style="width:200px;"  th:href="@{/user/settings}">Settings</a>
+			</div>
+			<div class="container text-center my-2">
+				<a class="btn btn-danger" style="width:200px;" th:href="@{/logout}">Sign Out</a>
+			</div>
+
+		</div>
+		
+		<script>
+			$('item').removeClass('active-link');
+			$('#home-link').addClass('active-link');
+		</script>
+		
+	</section>
+
+</body>
+</html>
