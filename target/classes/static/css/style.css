@@ -1,0 +1,123 @@
+body{
+	background: #e2e2e2;
+}
+
+.banner{
+	width:100%;
+	height:95vh;
+	background: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)) ,url("/img/consy.jpg");
+	background-size:cover;
+	color:white;
+}
+
+.my-card{
+	background : white;
+	padding: 30px;
+	color:black;
+}
+
+#login .container #login-row #login-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  height: 420px;
+  border: 1px solid #9C9C9C;
+  background-color: white;
+}
+
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+
+/*styling side bar*/
+
+.sidebar {
+
+	width: 18%;
+	background: white;
+	height: 100%;
+	position:fixed;
+	padding-top: 40px;
+	z-index: 9999999999999999999999999;  /*to overcome other options in small screen*/
+}
+
+.sidebar a{
+	display: block;
+	padding: 10px  35px;
+	text-decoration: none;
+	color: gray;
+}
+
+.sidebar a:hover{
+	background: #e2e2e2;
+}
+
+.sidebar .divider{
+	height: .8px;
+	width: 100%;
+	background: black;
+	margin-top: 10px;
+}
+
+.sidebar #crossbtn{
+	position: absolute;
+	top: 2%;
+	right: 35px;
+	font-size: 25px;
+	cursor: pointer;
+}
+/* this property used to set up for screen only*/
+
+@media only screen and (max-width: 600px){
+	.sidebar{
+		display: none;
+		width: 80% !important;
+		background: white;
+		height: 100vh;
+		position: fixed;
+		padding-top: 20px;
+	}
+	
+	.mainContent{
+		margin-left: 0% !important;
+	}
+}
+	
+	
+.mainContent {
+	margin-left: 20%;
+}
+
+#profile_img {
+	width: 40px;
+	height: 40px;
+	object-fit:cover;
+	border-radius: 60%;
+}
+
+.search-container {
+	position: relative;
+}
+
+.search-result {
+	position: absolute;
+	width: 100%;
+	padding: 5px;
+	border: 1px solid gray;
+	background: white;
+	display: none;
+}
+
+.active-link{
+		background: graytext;
+		color: white !important;
+} 
+
+.registerOTP{
+  margin-top: 200px;
+  max-width: 600px;
+  height: 300px;
+  margin-left:400px;
+  border: 1px solid #9C9C9C;
+  background-color: white;
+
+}

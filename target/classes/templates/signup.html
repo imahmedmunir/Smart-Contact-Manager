@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org"
+	th:replace="parent::Layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<section >
+			<div class="container ">
+			<div class="row">
+				<div class="col-md-8 offset-md-2 ">
+					
+					<div class="my-card mt-2">
+						<div class="container text-center">
+
+							<div th:if="${session.message}"  class="alert alert-danger"
+								role="alert">
+								<p th:text="${session.message.content}"></p>
+								<!-- message printing -->
+								
+							<th:block  th:text="${#session.removeAttribute('message')}"></th:block>	
+							</div>
+							<h1 class="text-center">
+								<img style="height: 100px;" alt="" src=""
+									th:src="@{/img/registration.png}"> 
+							</h1>
+						</div>
+							
+							
+						<form  th:action="@{/register}" th:method="post"
+							th:object="${user}"  >
+							<div>
+								<label class="form-label ">Name</label> <input type="text"
+									class="form-control"
+									th:classappend="${#fields.hasErrors('name')? 'is-invalid' : ' '}"
+									 name="name" aria-describedby="namelHelp"
+									required th:value="${user.name}">
+									<div th:each="n: ${#fields.errors('name')}" th:text="${n}"  
+										class="invalid-feedback"></div>
+							</div>
+							<div>
+								<label class="form-label ">Email</label> <input type="email"
+									class="form-control" 
+									th:classappend="${#fields.hasErrors('email')? 'is-invalid' : ' '}"
+									name="email" aria-describedby="namelHelp"
+									required th:value="${user.email}">
+									<div th:each="n: ${#fields.errors('email')}" th:text="${n}"  
+										class="invalid-feedback"
+									></div>
+							</div>
+							
+							
+							<div>
+								<label class="form-label ">Password</label> <input
+									type="password" class="form-control" 
+									th:classappend="${#fields.hasErrors('password')? 'is-invalid' : ' '}"
+									name="password"
+									aria-describedby="namelHelp" required>
+									<div th:each="n: ${#fields.errors('password')}" th:text="${n}"  
+										class="invalid-feedback"
+									></div>
+							</div>
+							<br>
+							<div>
+								<textarea class="form-control" rows="6"
+									placeholder="Put some words about you !!" name="about"
+									th:text="${user.about}"></textarea>
+							</div>
+							<div>
+								<input type="checkbox" class="form-contorl" name="checkbox">
+								<label class="form-lable"> Agree with Terms & Conditions</label>
+							</div>
+
+							<div class="container text-center">
+								<button class="btn btn-primary  " type="submit"  >Submit</button>
+								<button class="btn btn-warning  " type="reset" >Reset</button>
+							
+							</div>
+
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>
